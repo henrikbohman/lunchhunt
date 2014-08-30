@@ -1,5 +1,10 @@
 Lunchhunt::Application.routes.draw do
-  resources :restaurants
+  resources :restaurants do
+    member do
+      post 'upvote'
+      post 'downvote'
+    end
+  end
 
   root 'restaurants#index'
 

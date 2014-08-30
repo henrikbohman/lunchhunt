@@ -1,33 +1,20 @@
-<h1>Listing restaurants</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Url</th>
-      <th>Score</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @restaurants.each do |restaurant| %>
-      <tr>
-        <td><%= restaurant.name %></td>
-        <td><%= restaurant.description %></td>
-        <td><%= restaurant.url %></td>
-        <td><%= restaurant.score %></td>
-        <td><%= link_to 'Show', restaurant, class: 'btn btn-default btn-sm' %></td>
-        <td><%= link_to 'Edit', edit_restaurant_path(restaurant), class: 'btn btn-default btn-sm'%></td>
-        <td><%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'Add a lunch spot', new_restaurant_path, class: 'btn btn-primary' %>
+<% @restaurants.each do |restaurant| %>
+  <dl>
+    <dt>
+      <%= link_to restaurant.name, restaurant.url %> 
+      <span class="text-muted">
+        ( <%= restaurant.score %>
+        <%= link_to '+', upvote_restaurant_path(restaurant), method: :post, class: 'text-muted' %> 
+        <%= link_to '-', downvote_restaurant_path(restaurant), method: :post, class: 'text-muted' %> )
+      </span>
+    </dt>
+    <dd>
+      <%= restaurant.description %>
+      <!--
+      <%= link_to 'Show', restaurant, class: 'btn btn-default btn-sm' %>
+      <%= link_to 'Edit', edit_restaurant_path(restaurant), class: 'btn btn-default btn-sm'%>
+      <%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+      -->
+    </dd>
+  </dl>
+<% end %>

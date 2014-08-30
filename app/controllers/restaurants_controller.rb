@@ -61,6 +61,18 @@ class RestaurantsController < ApplicationController
     end
   end
 
+  def upvote
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.increment!(:score)
+    redirect_to :root, notice: 'Upvote counted'
+  end
+
+  def downvote
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.decrement!(:score)
+    redirect_to :root, alert: 'Downvote counted'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_restaurant
