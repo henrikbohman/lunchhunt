@@ -1,14 +1,14 @@
 <% @restaurants.each do |restaurant| %>
   <dl>
     <dt>
+      <%= link_to '+', upvote_restaurant_path(restaurant), method: :post, class: 'text-muted' %> 
       <%= link_to restaurant.name, restaurant.url %> 
-      <span class="text-muted">
-        ( <%= restaurant.score %>
-        <%= link_to '+', upvote_restaurant_path(restaurant), method: :post, class: 'text-muted' %> 
-        <%= link_to '-', downvote_restaurant_path(restaurant), method: :post, class: 'text-muted' %> )
-      </span>
+      <span class="badge">
+        <%= restaurant.score %>
+      </span> 
     </dt>
     <dd>
+      <%= link_to '-', downvote_restaurant_path(restaurant), method: :post, class: 'text-muted' %> 
       <%= restaurant.description %>
       <!--
       <%= link_to 'Show', restaurant, class: 'btn btn-default btn-sm' %>
