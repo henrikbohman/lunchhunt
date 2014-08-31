@@ -1,3 +1,4 @@
+<div class="col-md-6">
 <%= form_for(@restaurant) do |f| %>
   <% if @restaurant.errors.any? %>
     <div id="error_explanation">
@@ -16,7 +17,7 @@
     <%= f.text_field :name, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :description, "What's this place about?" %><br>
+    <%= f.label :description, "Short description" %><br>
     <%= f.text_field :description, class: 'form-control' %>
   </div>
   <div class="form-group">
@@ -24,6 +25,6 @@
     <%= f.text_field :url, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.submit "Add", class: "btn btn-primary" %>
+    <%= f.submit "Add it to the list", class: "btn btn-primary" %>
   </div>
 <% end %>

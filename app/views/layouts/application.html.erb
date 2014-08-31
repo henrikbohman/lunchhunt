@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Lunch hunt</title>
+  <title>Lunch Hunt</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -17,12 +17,12 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <%= link_to 'Lunch hunt', :root, class: 'navbar-brand' %>
+        <%= link_to 'Lunch Hunt', :root, class: 'navbar-brand' %>
       </div>
       <div class="navbar-collapse collapse">
       	<p class="navbar-text">what's cooking?</p>
         <ul class="nav navbar-nav navbar-right">
-          <li><div><%= link_to 'Add a lunch spot', new_restaurant_path, class: 'btn btn-default navbar-btn' %></div></li>
+          <li><div><%= link_to 'Suggest a new place', new_restaurant_path, class: 'btn btn-default navbar-btn' %></div></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>

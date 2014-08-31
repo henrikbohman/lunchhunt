@@ -28,7 +28,7 @@ class RestaurantsController < ApplicationController
 
     respond_to do |format|
       if @restaurant.save
-        format.html { redirect_to @restaurant, notice: 'Restaurant was successfully created.' }
+        format.html { redirect_to :root, notice: 'Restaurant added.' }
         format.json { render action: 'show', status: :created, location: @restaurant }
       else
         format.html { render action: 'new' }
@@ -62,15 +62,20 @@ class RestaurantsController < ApplicationController
   end
 
   def upvote
-    @restaurant = Restaurant.find(params[:id])
-    @restaurant.increment!(:score)
-    redirect_to :root, notice: 'Upvote counted'
+      @restaurant = Restaurant.find(params[:id])
+    unless session[:user_has_upvoted] == "true"
+      @restaurant.increment!(:score)
+      session[:user_has_upvoted] == "true"
+      redirect_to :root
+    else
+      redirect_to :root, :alert => 'Easy with the voting cowboy'
+    end
   end
 
   def downvote
     @restaurant = Restaurant.find(params[:id])
     @restaurant.decrement!(:score)
-    redirect_to :root, alert: 'Downvote counted'
+    redirect_to :root
   end
 
   private

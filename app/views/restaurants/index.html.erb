@@ -1,20 +1,25 @@
-<% @restaurants.each do |restaurant| %>
-  <dl>
-    <dt>
-      <%= link_to '+', upvote_restaurant_path(restaurant), method: :post, class: 'text-muted' %> 
-      <%= link_to restaurant.name, restaurant.url %> 
-      <span class="badge">
-        <%= restaurant.score %>
-      </span> 
-    </dt>
-    <dd>
-      <%= link_to '-', downvote_restaurant_path(restaurant), method: :post, class: 'text-muted' %> 
-      <%= restaurant.description %>
-      <!--
-      <%= link_to 'Show', restaurant, class: 'btn btn-default btn-sm' %>
-      <%= link_to 'Edit', edit_restaurant_path(restaurant), class: 'btn btn-default btn-sm'%>
-      <%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
-      -->
-    </dd>
-  </dl>
-<% end %>
+<!-- Left column -->
+<div class="col-md-8">
+  <% @restaurants.each do |restaurant| %>
+    <dl>
+      <dt>
+        <%= link_to '▲', upvote_restaurant_path(restaurant), method: :post, class: 'text-muted' %> 
+        <%= link_to restaurant.name, restaurant.url %> 
+        <span class="badge">
+          <%= restaurant.score %>
+        </span> 
+      </dt>
+      <dd>
+        <%= link_to '▼', downvote_restaurant_path(restaurant), method: :post, class: 'text-muted' %> 
+        <%= restaurant.description %>
+        <!--
+        <%= link_to 'Show', restaurant, class: 'btn btn-default btn-sm' %>
+        <%= link_to 'Edit', edit_restaurant_path(restaurant), class: 'btn btn-default btn-sm'%>
+        <%= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm' %>
+        -->
+      </dd>
+    </dl>
+  <% end %>
+</div>
+
+<!-- Right column -->
