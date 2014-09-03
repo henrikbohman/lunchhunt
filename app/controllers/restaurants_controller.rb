@@ -62,19 +62,32 @@ class RestaurantsController < ApplicationController
   end
 
   def upvote
-      @restaurant = Restaurant.find(params[:id])
-    unless session[:user_has_upvoted] == "true"
+    @restaurant = Restaurant.find(params[:id])
+    session[:upvotes] = 0 if session[:upvotes].blank?
+    unless session[:upvotes] > 1
       @restaurant.increment!(:score)
-      session[:user_has_upvoted] == "true"
+      session[:upvotes] = session[:upvotes] + 1
       redirect_to :root
     else
-      redirect_to :root, :alert => 'Easy with the voting cowboy'
+      redirect_to :root, :alert => 'Easy George..'
     end
   end
 
   def downvote
     @restaurant = Restaurant.find(params[:id])
-    @restaurant.decrement!(:score)
+    session[:downvotes] = 0 if session[:downvotes].blank?
+    unless session[:downvotes] > 1
+      @restaurant.decrement!(:score)
+      session[:downvotes] = session[:downvotes] + 1
+      redirect_to :root
+    else
+      redirect_to :root, :alert => 'Enough of that..'
+    end
+  end
+
+  def resetsession
+    session[:downvotes] = nil
+    session[:upvotes] = nil
     redirect_to :root
   end
 

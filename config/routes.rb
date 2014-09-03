@@ -6,6 +6,8 @@ Lunchhunt::Application.routes.draw do
     end
   end
 
+  match '/resetsession',     to: 'restaurants#resetsession', via: 'get'
+
   root 'restaurants#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
