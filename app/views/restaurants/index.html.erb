@@ -3,7 +3,7 @@
     <dl>
       <dt>
         <%= link_to '▲', upvote_restaurant_path(restaurant), method: :post, id: 'vote-arrow-up' %> 
-        <%= link_to restaurant.name, restaurant.url %> 
+        <%= link_to restaurant.name, restaurant.url %>
         <span class="badge">
           <%= restaurant.score %>
         </span> 
