@@ -30,6 +30,8 @@ gem 'jbuilder', '~> 1.2'
 # Henrik custom gems
 gem 'bootstrap-sass', '~> 3.2.0'
 
+gem 'rails_12factor' # getting links/stylesheets to work with Heroku
+
 group :development, :test do
   gem 'sqlite3'
 end
