@@ -30,6 +30,10 @@ gem 'jbuilder', '~> 1.2'
 # Henrik custom gems
 gem 'bootstrap-sass', '~> 3.2.0'
 
+group :production do
+	gem 'pg'
+end
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
