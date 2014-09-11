@@ -6,7 +6,9 @@
         <%= link_to restaurant.name, restaurant.url %>
         <span class="badge">
           <%= restaurant.score %>
-        </span> 
+        </span>
+        <% gmaps_location = 'http://maps.google.com/?q=' + restaurant.name + ', East London' %>
+        <%= link_to '➹', gmaps_location %>
       </dt>
       <dd>
         <%= link_to '▼', downvote_restaurant_path(restaurant), method: :post, id: 'vote-arrow-down' %> 
